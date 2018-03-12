@@ -1,0 +1,12 @@
+{% extends 'conference/base.html' %}
+
+{% block content %}
+        {% for speakers in speakers %}
+    <div class="post">
+        <h1><a href="{% url 'speakers_do' pk=speakers.pk %}">{{ speakers }}</a></h1>
+        <p>{{ speakers.about_speakers|linebreaksbr }}</p>
+    </div>
+        {% endfor %}
+{% endblock %}
+
+

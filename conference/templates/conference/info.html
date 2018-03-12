@@ -1,0 +1,33 @@
+{% extends 'conference/base.html' %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+ <a class="btn btn-default" href="{% url 'reports_edit' pk=reports.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+ <a class="btn btn-default" href="{% url 'reports_remove' pk=reports.pk %}"><span class="glyphicon glyphicon-remove"></span></a> <br>
+{% if reports.published_date %}
+            <br><div class="date">
+                {{ reports.published_date }}
+            </div>
+{% else %}
+    <br><a class="btn btn-default" href="{% url 'reports_publish' pk=reports.pk %}">Опубликовать</a>
+{% endif %}
+
+{% endif %}
+
+        <div><h1>Название доклада: {{ reports.reports_name }}</h1>
+
+        <h2>Спикер:{{ reports.speakers }}</h2>
+
+        <p>Описание доклада:{{ reports.description }}</p>
+
+
+
+
+
+
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'conference/base.html' %}
+
+{% block content %}
+        {% for speakers in speakers %}
+    <div class="post">
+        <h1>Спикер:<a href="{% url 'speakers_do' pk=speakers.pk %}">{{ speakers }}</a></h1>
+    </div>
+        {% endfor %}
+<h2>Доклады:</h2>
+
+        {% for reports in reports %}
+
+{% if reports.published_date %}
+    <div class="post">
+        <h1><a href="{% url 'reports_info' pk=reports.pk %}">{{ reports }}</a></h1>
+    </div>
+{% endif %}
+        {% endfor %}
+{% endblock %}
+
+

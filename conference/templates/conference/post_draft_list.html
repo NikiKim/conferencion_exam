@@ -1,0 +1,11 @@
+{% extends 'conference/base.html' %}
+
+{% block content %}
+    {% for reports in reports %}
+        <div class="post">
+            <p class="date">Создана: {{ reports.created_date|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'reports_info'  pk=reports.pk %}">{{ reports.reports_name }}</a></h1>
+            <p>{{reports.description|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

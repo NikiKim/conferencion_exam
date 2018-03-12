@@ -1,0 +1,18 @@
+{% extends 'conference/base.html' %}
+
+{% block content %}
+
+    <h1>Новый Доклад</h1>
+<h2>{{ans}}</h2>
+
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Сохранить</button>
+    </form>
+{% endblock %}
+
+
+#{% csrf_token %} Так как мы создаем POST форму (которая может привести к изменениям данных),
+нам следует побеспокоится о Cross Site Request Forgeries.
+Благодаря Django это очень просто. В общем, все POST формы,
+которые отправляются на внутренний URL, должны использовать тег {% csrf_token %}.
